@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <!--  -->
+    <script src="{% static 'jquery-3.6.4.js' %}"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        {% for category in all_categories %}
+        <div>
+            <p><input type="checkbox" class="checkbox" value="{{ category.name }}">{{ category.name }}</p>
+        </div>
+        {% endfor%}
+    </div>
+    <div class="container">
+        {% for transport in all_transports %}
+        <div>
+            <p>{{ transport.name }}</p>
+            <p>{{ transport.price }}$</p>
+            <img src="{{ transport.image.url }}" style="max-height: 400px">
+        </div>
+        <hr>
+        <br><br>
+        {% endfor%}
+
+    </div>
+    <input class="url_get" hidden value="{% url 'get_filter' %}">
+    <script src="{% static 'script.js' %}"></script>
+</body>
+
+</html>
